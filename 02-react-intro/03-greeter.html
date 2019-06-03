@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Greeter</title>
+	<style>
+		.highlight{
+			color : blue;
+		}
+	</style>
+	<script src="react.development.js"></script>
+	<script src="react-dom.development.js"></script>
+	<script src="babel.min.js"></script>
+
+	<script type="text/babel">
+		class Greeter extends React.Component{
+			
+			state = { userName : '', message : '[This is a dummy greet message]' } ;
+
+			onGreetClick = () => {
+				//let userName = prompt('Enter the user name :');
+				let greetMessage = `Hi ${this.state.userName}, ${this.props.msg}`;
+				this.setState({ message : greetMessage });
+			}
+
+			onUserNameChange = (evt) => {
+				let userName = evt.target.value;
+				this.setState({ userName : userName });
+			}
+			render(){
+				return(
+					<div>
+						<h1>Greeter</h1>
+						<hr/>
+						<label htmlFor="">User Name :</label>
+						<input type="text" onChange={this.onUserNameChange}/>
+						<input type="button" value="Greet" onClick={this.onGreetClick}/>
+						<div className="highlight">{this.state.message}</div>
+					</div>
+				)
+			}
+		}
+
+		let appGreetMsg = 'Have a nice evening!';
+
+		ReactDOM.render(<Greeter msg={appGreetMsg} xyz="100" abc="200"/>,
+			document.getElementById('root'));
+	</script>
+</head>
+<body>
+	<div id="root">
+		
+	</div>
+</body>
+</html>
