@@ -43,7 +43,11 @@
 
 		let appGreetMsg = 'Have a nice evening!';
 
-		ReactDOM.render(<Greeter msg={appGreetMsg} xyz="100" abc="200"/>,
+		ReactDOM.render(
+			<div>
+				<Greeter msg={appGreetMsg}/>
+				<Greeter msg="Have a wonderful year!" />
+			</div>,
 			document.getElementById('root'));
 	</script>
 </head>
